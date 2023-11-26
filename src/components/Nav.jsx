@@ -1,27 +1,22 @@
 import "react";
 
-export default function MyComponent() {
+export default function Nav(props) {
   return (
-    <div className="bg-white self-stretch flex w-full items-center justify-between gap-5 pl-10 pr-20 py-6 max-md:max-w-full max-md:flex-wrap max-md:px-5">
+    <div className="bg-indigo-900 self-stretch flex w-full items-center justify-between gap-5 pl-14 pr-20 py-6 max-md:max-w-full max-md:flex-wrap max-md:px-5">
       <div className="flex items-stretch justify-between gap-5 my-auto max-md:justify-center">
-        <div className="text-black text-base font-bold leading-4 tracking-wide self-start">
-          Home
+        <div className="text-white text-base font-bold leading-4 tracking-wide">
+          Home{" "}
         </div>
-        <div className="text-black text-base font-bold leading-4 tracking-wide">
-          Our Project
+        <div className="text-white text-base font-bold leading-4 tracking-wide">
+          Donasi
         </div>
-        <div className="text-black text-base font-bold leading-4 tracking-wide whitespace-nowrap self-start">
+        <div className="text-white text-base font-bold leading-4 tracking-wide whitespace-nowrap">
           Akun
         </div>
       </div>
-      <div className="self-stretch flex items-stretch justify-between gap-4">
-        <div className="text-white text-base font-medium leading-4 tracking-wide whitespace-nowrap justify-center items-center border-[color:var(--primary-60,#0F62FE)] bg-blue-600 grow px-5 py-2.5 border-2 border-solid">
-          Donasi
-        </div>
-        <div className="text-blue-600 text-base font-medium leading-4 tracking-wide whitespace-nowrap justify-center items-center border-[color:var(--primary-60,#0F62FE)] grow px-5 py-2.5 border-2 border-solid">
-          Masuk
-        </div>
-      </div>
+      <button className="border-0 text-indigo-900 text-base font-medium leading-4 tracking-wide whitespace-nowrap justify-center shadow-sm bg-white self-stretch px-5 py-2.5 rounded-3xl border-2 border-solid border-blue-200 max-md:pl-2.5 hover:bg-indigo-100">
+        Masuk
+      </button>
     </div>
   );
 }
