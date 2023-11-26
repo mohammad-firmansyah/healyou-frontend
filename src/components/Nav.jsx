@@ -1,13 +1,13 @@
 import "react";
 
-export default function MyComponent(props) {
+export default function MyComponent() {
   return (
     <div className="bg-white self-stretch flex w-full items-center justify-between gap-5 pl-10 pr-20 py-6 max-md:max-w-full max-md:flex-wrap max-md:px-5">
       <div className="flex items-stretch justify-between gap-5 my-auto max-md:justify-center">
         <div className="text-black text-base font-bold leading-4 tracking-wide self-start">
-          Home{" "}
+          Home
         </div>
-        <div className="text-white text-base font-bold leading-4 tracking-wide">
+        <div className="text-black text-base font-bold leading-4 tracking-wide">
           Our Project
         </div>
         <div className="text-black text-base font-bold leading-4 tracking-wide whitespace-nowrap self-start">
