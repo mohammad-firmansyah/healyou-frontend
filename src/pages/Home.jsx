@@ -73,7 +73,7 @@ export default function Home() {
         <div className="self-stretch text-zinc-800 text-center text-4xl font-bold leading-10 w-full mt-2 max-md:max-w-full">
           HEALYOU SIAP MEMBANTU
         </div>
-        <div className="self-stretch text-zinc-800 text-center text-2xl font-bold leading-7 w-full mt-2 max-md:max-w-full">
+        <div className="text-zinc-800 text-center text-xl mx-2 font-bold leading-7 w-full mt-2 max-md:max-w-full">
           KAMI ADALAH ORGANISASI SOSIAL UNTUK MERAWAT, MENYELAMATKAN, DAN
           MENYALURKAN KUCING - KUCING TERLANTAR, SAKIT DAN TERLUKA
         </div>
