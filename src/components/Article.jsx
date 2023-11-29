@@ -1,4 +1,4 @@
-import"react";
+import "react";
 
 export default function Article() {
   return (
