@@ -4,6 +4,7 @@ import './index.css'
 import LoginPages from './pages/loginPages.jsx';
 import Home from './pages/Home.jsx';
 import SignUpPages from './pages/signUpPages.jsx';
+import ProfilePages from './pages/profilePages.jsx';
 
 import{
   createBrowserRouter,
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path:'/signUp',
     element:<SignUpPages/>,
+  },
+  {
+    path:'/profile',
+    element: <ProfilePages/>,
   }
 ]);
 
