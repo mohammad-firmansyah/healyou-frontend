@@ -4,9 +4,12 @@ import Nav from '../components/Nav'
 export default function DetailDonasi() {
     return (
         <>
+        <div className="container">
+
+        
             <Nav/>
 
-            <img src="/assets/1.jpg" alt="" />
+            <img className="w-full" src="/assets/1.jpg" alt="" />
 
             <div className='m-8 '>
 
@@ -28,7 +31,7 @@ export default function DetailDonasi() {
 
                 <button className='w-full font-regular bg-blue-600 text-white py-2 rounded-full mt-6 text-sm'>Donasi Sekarang</button>
             </div>
-
+</div>
         </>
     )
 }

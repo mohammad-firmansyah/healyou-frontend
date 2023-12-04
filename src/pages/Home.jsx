@@ -1,4 +1,5 @@
 import "react";
+import "../App.css";
 import Nav from "../components/Nav"
 import Article from "../components/Article"
 import Footer from "../components/Footer";
@@ -28,7 +29,7 @@ export default function Home() {
           className=" object-contain object-center w-full justify-center items-center overflow-hidden self-stretch max-md:max-w-full"
         />
 
-        <div className="text-black text-3xl font-bold leading-8 tracking-wide self-center whitespace-nowrap mt-12 max-md:max-w-full max-md:mt-10">
+        <div className="text-black text-3xl font-bold leading-8 tracking-wide self-center whitespace-nowrap mt-12 max-md:max-w-full max-md:mt-10 text-center">
           SELAMAT DATANG DI HEALYOU
         </div>
         <div className="text-black text-center text-lg font-light leading-5 tracking-wide self-center max-w-[615px] mt-5 max-md:max-w-full">
