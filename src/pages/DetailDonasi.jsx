@@ -1,5 +1,6 @@
 import 'react'
 import Nav from '../components/Nav'
+import Footer from '../components/Footer'
 import HistoryDonation from '../components/HistoryDonation'
 
 export default function DetailDonasi() {
@@ -71,6 +72,23 @@ export default function DetailDonasi() {
                 <HistoryDonation name="Firman" totalDonation={"20000"} time={""}/>
             </div>
          </h2>
+
+         <hr />
+        
+        <h2 className='font-bold text-xl text-center mb-4 m-8'> 
+            Kabar Terbaru
+
+            
+           
+         </h2>
+
+          <div className='m-8'></div>
+            <p className='text-center mb-8'>
+                Belum ada kabar baru dari penyelenggara
+            </p>
+
+<Footer/>
         </div>
+
     )
 }
