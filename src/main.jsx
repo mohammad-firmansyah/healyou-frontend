@@ -5,6 +5,7 @@ import './App.css'
 import LoginPages from './pages/loginPages.jsx';
 import Home from './pages/Home.jsx';
 import SignUpPages from './pages/signUpPages.jsx';
+import Payment from './pages/Payment.jsx';
 import ProfilePages from './pages/profilePages.jsx';
 
 import{
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
   {
     path:'/profile',
     element: <ProfilePages/>,
+  }
+  ,
+  {
+    path:'/payment',
+    element: <Payment/>,
   }
 ]);
 
