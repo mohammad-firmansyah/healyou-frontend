@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
+import { MIDTRANS_CLIENT_ID } from "../utils/const"
 const useSnap = () => {
     
     const [snap,setSnap] = useState(null)
     useEffect(() => {
-        const myMidtransClientKey = "SB-Mid-client-m9dx0Kkamj7QvOeZ"
+        const myMidtransClientKey = MIDTRANS_CLIENT_ID
         const script = document.createElement('script')
         script.type = 'text/javascript';
         script.src = 'https://app.sandbox.midtrans.com/snap/snap.js'

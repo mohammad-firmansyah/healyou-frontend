@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import './App.css'
+import './utils/const.js'
 import LoginPages from './pages/loginPages.jsx';
 import Home from './pages/Home.jsx';
 import SignUpPages from './pages/signUpPages.jsx';

@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import useSnap from '../hooks/useSnap'
 import { useEffect, useState,useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { APP_BASE_URL } from "../utils/const";
 
 export default function Home() {
   const {snapEmbed} = useSnap()
@@ -39,7 +40,7 @@ export default function Home() {
         'id_donasi':12,
         'price':1000
     }
-    const url = import.meta.env.VITE_APP_URL+"api/payment/create"
+    const url = APP_BASE_URL+"api/payment/create"
     fetch(url, {
     method: 'POST',
     headers: {
