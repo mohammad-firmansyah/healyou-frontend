@@ -1,21 +1,50 @@
 import { useEffect, useState } from "react"
-
-const [snap,setSnap] = useState(null)
 const useSnap = () => {
+    
+    const [snap,setSnap] = useState(null)
     useEffect(() => {
-        const myMidtransClientKey = import.meta.env.VITE_REACT_APP_MIDTRANS_CLIENT_ID
-        const script = `${import.meta.env.VITE_REACT_APP_MIDTRANS_API}`
+        const myMidtransClientKey = "SB-Mid-client-m9dx0Kkamj7QvOeZ"
+        const script = document.createElement('script')
+        script.type = 'text/javascript';
+        script.src = 'https://app.sandbox.midtrans.com/snap/snap.js'
         script.setAttribute('data-client-key',myMidtransClientKey)
-        script.onLoad = () => {
-            setSnap(window.snap)
+        script.onload = () => {
+        if ('snap' in window) {
+            const { snap } = window;
+            setSnap(snap);
         }
+        };
 
-        document.body.appendChild(script)
+        document.head.appendChild(script)
 
         return ()=> {
-            document.body.removeChild(script)
+            document.head.removeChild(script)
         }
-    })
-}
+    },[])
 
-conset snapEmbed = (snapToken,embedId,action)
+
+    const snapEmbed = (snapToken,embedId,action) => {
+    if(snap){
+        snap.embed(snapToken, {
+            embedId,
+            onSuccess :function (result) {
+                console.log('succes',result);
+                action.onSuccess(result);
+            },
+            onPending :function (result) {
+                console.log('pending',result);
+                action.onPending(result);
+            },
+            onClose :function (result) {
+                action.onClose(result);
+            },
+        })
+    }
+    
+}
+    
+
+
+return {snapEmbed}
+}
+export default useSnap

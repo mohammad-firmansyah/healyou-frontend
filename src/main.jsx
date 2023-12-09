@@ -13,6 +13,7 @@ import{
   RouterProvider,
 } from "react-router-dom";
 import DetailDonasi from './pages/DetailDonasi.jsx';
+import MyDonation from './pages/MyDonation.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
   {
     path:'/payment',
     element: <Payment/>,
+  }
+  ,
+  {
+    path:'/donation/',
+    element: <MyDonation/>,
   }
 ]);
 
