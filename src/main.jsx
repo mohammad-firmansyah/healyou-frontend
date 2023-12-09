@@ -15,6 +15,8 @@ import{
 } from "react-router-dom";
 import DetailDonasi from './pages/DetailDonasi.jsx';
 import MyDonation from './pages/MyDonation.jsx';
+import SuccessPayment from './pages/SuccessPayment.jsx'
+import FailedPayment from './pages/FailedPayment.jsx'
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,15 @@ const router = createBrowserRouter([
   {
     path:'/donation/',
     element: <MyDonation/>,
+  }
+  ,
+  {
+    path:'/success-donation/',
+    element: <SuccessPayment/>,
+  },
+  {
+    path:'/failed-donation/',
+    element: <FailedPayment/>,
   }
 ]);
 
