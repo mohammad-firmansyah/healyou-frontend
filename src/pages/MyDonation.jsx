@@ -40,7 +40,7 @@ export default function MyDonation() {
           <div className="flex-column">
             <div className="">
               <p className="font-semibold">
-                Akun <span className="mx-3"> > </span> Donasi Saya
+                Akun <span className="mx-3"> {">"} </span> Donasi Saya
               </p>
             </div>
 
