@@ -1,9 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
+import './App.css'
+import './utils/const.js'
 import LoginPages from './pages/loginPages.jsx';
 import Home from './pages/Home.jsx';
 import SignUpPages from './pages/signUpPages.jsx';
+import Payment from './pages/Payment.jsx';
 import ProfilePages from './pages/profilePages.jsx';
 import DetailTransaksiPages from './pages/detailTransaksi.jsx';
 
@@ -11,6 +14,8 @@ import{
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import DetailDonasi from './pages/DetailDonasi.jsx';
+import MyDonation from './pages/MyDonation.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +25,10 @@ const router = createBrowserRouter([
   {
       path:"/login",
       element: <LoginPages/>,
+  },
+  {
+      path:"/detail/:id",
+      element: <DetailDonasi/>,
   },
   {
     path:'/signUp',
@@ -32,6 +41,16 @@ const router = createBrowserRouter([
   {
     path:'/detailTransaksi',
     element: <DetailTransaksiPages/>,
+  }
+  ,
+  {
+    path:'/payment',
+    element: <Payment/>,
+  }
+  ,
+  {
+    path:'/donation/',
+    element: <MyDonation/>,
   }
 ]);
 
