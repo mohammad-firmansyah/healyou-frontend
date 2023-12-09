@@ -1,10 +1,14 @@
 
 import { APP_BASE_URL } from "../utils/const";
-
+import { useNavigate } from "react-router-dom";
 import {useRef, useState} from "react";
 
 function loginPages(){
+  const navigate = useNavigate()
 
+  const navigateToHome = () => {
+    navigate('/')
+  }
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 
@@ -27,6 +31,7 @@ const userPass = useRef()
       .then((data) => {
 
         localStorage.setItem("token",data.token)
+        navigateToHome()
       })
       .catch((err) => {
         console.error("Error fetching data:", err);
