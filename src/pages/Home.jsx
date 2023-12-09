@@ -32,7 +32,7 @@ export default function Home() {
         <div className="text-black text-3xl font-bold leading-8 tracking-wide self-center whitespace-nowrap mt-12 max-md:max-w-full max-md:mt-10 text-center">
           SELAMAT DATANG DI HEALYOU
         </div>
-        <div className="text-black text-center text-lg font-light leading-5 tracking-wide self-center max-w-[615px] mt-5 max-md:max-w-full">
+        <div className="text-black text-center text-lg font-light leading-5 tracking-wide self-center max-w-[615px] mx-auto mt-5 max-md:max-w-full">
           Website donasi untuk kucing yang bertujuan untuk membantu
           kucing-kucing yang membutuhkan perawatan medis, makanan, dan tempat
           tinggal yang layak.
