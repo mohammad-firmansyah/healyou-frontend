@@ -5,6 +5,7 @@ import LoginPages from './pages/loginPages.jsx';
 import Home from './pages/Home.jsx';
 import SignUpPages from './pages/signUpPages.jsx';
 import ProfilePages from './pages/profilePages.jsx';
+import DetailTransaksiPages from './pages/detailTransaksi.jsx';
 
 import{
   createBrowserRouter,
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path:'/profile',
     element: <ProfilePages/>,
+  },
+  {
+    path:'/detailTransaksi',
+    element: <DetailTransaksiPages/>,
   }
 ]);
 

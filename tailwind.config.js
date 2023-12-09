@@ -10,7 +10,7 @@ export default {
     extend: {
       colors:{
         'light-blue':'#B9D6F2'
-      }
+      },
     },
   },
   plugins: [],
