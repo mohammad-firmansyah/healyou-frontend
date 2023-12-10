@@ -1,6 +1,48 @@
 
+import { APP_BASE_URL } from "../utils/const";
+import { useNavigate } from "react-router-dom";
+import { useState} from "react";
 
 function SignUpPages(){
+
+  const navigate = useNavigate()
+
+  const navigateToHome = () => {
+    navigate('/')
+  }
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [namaDepan, setNamaDepan] = useState("");
+const [namaBelakang, setNamaBelakang] = useState("");
+const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
+    const handleSubmit =  () => {
+      const data = {
+        name: namaDepan +" "+ namaBelakang,
+        email: email,
+        password: password,
+        password_confirmation: passwordConfirmation
+        }
+      fetch(APP_BASE_URL + "api/register", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+      })
+      .then((res) => res.json())
+      .then((data) => {
+
+        localStorage.setItem("token",data.token)
+        navigateToHome()
+      })
+      .catch((err) => {
+        console.error("Error fetching data:", err);
+      });
+    }
+  
+
+
     return(
         
         <div className='flex items-center justify-center w-full '>
@@ -9,36 +51,32 @@ function SignUpPages(){
           <div className="flex w-full gap-2">
             <div className="w-full" >
                 <label className="form-label">Nama depan</label><br></br>
-                <input type="text" className="w-full h-10 border-2 rounded-lg border-black" placeholder='    masukkan nama depan' ></input>
+                <input type="text" className="w-full h-10 border-2 rounded-lg border-black" placeholder='    masukkan nama depan' onChange={(e) => setNamaDepan(e.target.value)}></input>
             </div>
             <div className="w-full">
                 <label className="form-label">Nama belakang</label><br></br>
-                <input type="text" className="w-full h-10 border-2 rounded-lg border-black" placeholder='    masukkan nama belakang' ></input>
+                <input type="text" className="w-full h-10 border-2 rounded-lg border-black" placeholder='    masukkan nama belakang'  onChange={(e) => setNamaBelakang(e.target.value)}></input>
             </div>
           </div>
           <div>
             <label className="form-label">Email address</label><br></br>
-            <input type="email" className="w-full h-10 border-2 rounded-lg border-black" placeholder='    myemail@email.com' ></input>
+            <input type="email" className="w-full h-10 border-2 rounded-lg border-black" placeholder='    myemail@email.com'   onChange={(e) => setEmail(e.target.value)} ></input>
           </div>
         
         <div>
           <label className="form-label">Password</label><br></br>
-          <input type="password" className="w-full h-10 border-2 rounded-lg border-black" placeholder='   your secret password' ></input>
+          <input type="password" className="w-full h-10 border-2 rounded-lg border-black" placeholder='   your secret password'  onChange={(e) => setPassword(e.target.value)} ></input>
+        </div>
+
+        <div>
+          <label className="form-label">Password confirmation</label><br></br>
+          <input type="password" className="w-full h-10 border-2 rounded-lg border-black" placeholder='   your secret password'  onChange={(e) => setPasswordConfirmation(e.target.value)}></input>
           <h6>It must be a combination of minimum 8 letters, numbers, and symbols.</h6>
         </div>
 
-        <div className=' flex justify-between items-center '>
-            <div className='leftSide'>
-                <input type="checkbox" className="checkbox" placeholder='remember em'></input>
-                <label> remember me</label>
-            </div>
-            <div>
-              <a className='text-right items-end' href='./'>forgot password?</a>
-            </div>
-        </div>
         <br></br>
         <div>
-        <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign Up</button>
+        <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onClick={handleSubmit}  >Sign Up</button>
         </div>
         <br></br>
         
