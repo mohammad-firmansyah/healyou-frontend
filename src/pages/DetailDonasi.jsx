@@ -2,8 +2,104 @@ import 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import HistoryDonation from '../components/HistoryDonation'
+import { useEffect, useState } from 'react'
+import { APP_BASE_URL } from "../utils/const";
+import {useParams,useNavigate} from 'react-router-dom'
+import {formattedAmount} from '../utils/helpers'
 
 export default function DetailDonasi() {
+
+    const params = useParams();
+    const navigate = useNavigate();
+   
+
+    const [donation,setDonation] = useState(null)
+    const [perk,setPerk] = useState(0)
+    const [donatur,setDonatur] = useState(0)
+    const [percentage,setPercentage] = useState("0")
+    const [historyDonation,setHistoryDonation] = useState(null)
+
+    const data = {
+        "id_donasi" : params.id
+    }
+
+    const getAllHistoryDonation = () => {
+        fetch(APP_BASE_URL+"api/payment/data/donasi",{
+            method:"get",
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3N5dWt1cmltYW4uY29tL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE3MDIxMDM0NjYsImV4cCI6MTcwMjEzMjI2NiwibmJmIjoxNzAyMTAzNDY2LCJqdGkiOiJpYVhhQ1lIUVc5N1UwbG80Iiwic3ViIjoiMTEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ul6lWpWW5LSmNTQSAyq-91V3nL9jKMXmQZvsxZErPz0"
+            },
+            body:JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data => {
+            setHistoryDonation(data.data_payment)
+            console.log(data);
+        })
+        .catch(err => {
+        })
+    }
+    const getDetailDonation = () => {
+        fetch(APP_BASE_URL+"api/pilihan/detail_data_donasi?id_data_donasi="+params.id)
+        .then(res => res.json())
+        .then(data => {
+            setDonation(data.dataDonasi)
+            console.log(data);
+            let i = 0
+            while (i < data.dataDonasi.length) {
+                i++
+            }
+        })
+        .catch(err => {
+            alert("data donasi tidak ada")
+            navigate('/')
+        })
+    }
+
+    const getPayments = () => {
+        fetch(APP_BASE_URL+"api/payment/data/donasi",{
+            method:'post',
+            headers:{
+                "Content-type":"application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data => {
+            
+            let i = 0
+            while (i < data.data_payment.length) {
+                if(data.data_payment[i].payment_status == 2 ){
+                    let intValue = parseInt(data.data_payment[i].price, 10);
+                    setPerk(prev => prev + intValue)
+                }
+                i++
+            }
+            let percentage = (perk/donation.target)*100
+            console.log(percentage);
+            if(percentage < 1){
+                setPercentage("0")
+            } else if (percentage > 1 && percentage <= 25) {
+                setPercentage("1/4")
+            } else if (percentage > 25 && percentage <= 50) {
+                setPercentage("1/2")
+            } else if (percentage > 50 && percentage <= 75) {
+                setPercentage("1/3")
+            } else {
+                setPercentage("full")
+            }
+        })
+        .catch(err => {
+        })
+    }
+
+    useEffect(() => {
+        getAllHistoryDonation()
+        getDetailDonation()
+        getPayments()
+    },[])
+
     return (
         <div className='bg-gradient-to-b from-white to-indigo-100 '>
             <Nav/>
@@ -13,19 +109,19 @@ export default function DetailDonasi() {
             <div className='m-8 '>
 
                 <h1 className='text-xl font-medium'>
-                    Donasi Anak Kucing yang Terlantar 
+                    {donation?.judul_donasi}
                 </h1>
 
                 <p className='mt-2 text-xl font-medium mb-2'>
-                    Rp. 7.500.000
+                    {formattedAmount(donation?.target)}
                 </p>
 
                 <span className='text-indigo-700 font-bold text-sm'>
-                    Terkumpul dari target Rp.10.000.000
+                    Terkumpul dari target{formattedAmount(perk)}
                 </span>
 
                 <div className='border-2  w-full h-3 rounded-full bg-blue-50 mt-3 overflow-hidden '>
-                    <div className='w-[75%] h-3 bg-blue-600'/>
+                    <div className={'w-'+ percentage +' h-3 bg-blue-600'}/>
                 </div>
 
                 <button className='w-full font-regular bg-blue-600 text-white py-2 rounded-full mt-6 text-sm'>Donasi Sekarang</button>
@@ -69,7 +165,13 @@ export default function DetailDonasi() {
             Riwayat Donasi
 
             <div className='container-history-donation flex flex-column justify-center'>
-                <HistoryDonation name="Firman" totalDonation={"20000"} time={""}/>
+                {
+                    (historyDonation == null) ?(<></>) : (
+                    historyDonation.map((e,i) => {
+                        <HistoryDonation key={i} name="Firman" totalDonation={"20000"} time={""}/>
+                    })
+                    )
+                }
             </div>
          </h2>
 
