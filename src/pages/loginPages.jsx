@@ -35,6 +35,7 @@ const userPass = useRef()
       })
       .catch((err) => {
         console.error("Error fetching data:", err);
+        console.log("error login")
       });
     }
   
