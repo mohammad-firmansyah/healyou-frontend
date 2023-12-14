@@ -1,6 +1,6 @@
 import "react";
 
-export default function Article({title,img}) {
+export default function Article({title,img,handleClick,id}) {
   return (
     <div className="items-stretch border border-[color:var(--cool-gray-20,#DDE1E6)] shadow-sm  overflow-hidden bg-white flex grow flex-col w-full mx-auto rounded-3xl border-solid max-md:mt-9">
       <img
@@ -18,7 +18,7 @@ export default function Article({title,img}) {
         <div className="text-zinc-800 text-xl font-bold leading-6 mt-1 mb-10">
           {title}
         </div>
-      <button className="px-4 py-1 text-sm w-24 text-indigo-900 font-semibold rounded-full border border-indigo-900 hover:text-white hover:bg-indigo-900 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-900 focus:ring-offset-2">
+      <button className="px-4 py-1 text-sm w-24 text-indigo-900 font-semibold rounded-full border border-indigo-900 hover:text-white hover:bg-indigo-900 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-indigo-900 focus:ring-offset-2" onClick={() => handleClick(id)}>
         Baca
       </button>
       </div>

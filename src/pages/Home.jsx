@@ -3,8 +3,14 @@ import "../App.css";
 import Nav from "../components/Nav"
 import Article from "../components/Article"
 import Footer from "../components/Footer";
-
+import { useNavigate } from "react-router-dom";
 export default function Home() {
+  const navigate = useNavigate()
+
+  const navigateToArticle = (id) => {
+    navigate('/article/'+(parseInt(id)+1).toString())
+  }
+
   const articles = [
     {
       "img":"1.jpg",
@@ -42,7 +48,7 @@ export default function Home() {
             
                 {
                   articles.map((value,key) => {
-                    return <Article key={key} title={value.title} img={value.img} />
+                    return <Article key={key} title={value.title} img={value.img} handleClick={() => navigateToArticle(key)} />
                   })
                 }
           </div>

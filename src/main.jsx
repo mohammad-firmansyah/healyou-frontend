@@ -18,6 +18,8 @@ import DetailDonasi from './pages/DetailDonasi.jsx';
 import MyDonation from './pages/MyDonation.jsx';
 import SuccessPayment from './pages/SuccessPayment.jsx'
 import FailedPayment from './pages/FailedPayment.jsx'
+import ArticlePage from './pages/ArticlePage.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 const router = createBrowserRouter([
   {
@@ -62,6 +64,15 @@ const router = createBrowserRouter([
   {
     path:'/failed-donation/',
     element: <FailedPayment/>,
+  },
+  {
+    path:'/article/:id',
+    element: <ArticlePage/>,
+  }
+  ,
+  {
+    path:'*',
+    element: <NotFound/>,
   }
 ]);
 

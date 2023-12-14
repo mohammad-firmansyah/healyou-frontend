@@ -13,31 +13,35 @@ export default function DetailDonasi() {
     const navigate = useNavigate();
    
 
-    const [donation,setDonation] = useState(null)
+    const [isLoading,setIsLoading] = useState(false)
+    const [donation,setDonation] = useState(false)
     const [perk,setPerk] = useState(0)
     const [donatur,setDonatur] = useState(0)
     const [percentage,setPercentage] = useState("0")
     const [historyDonation,setHistoryDonation] = useState(null)
 
     const data = {
-        "id_donasi" : params.id
+        "id_donasi" :parseInt(params.id)
     }
 
     const getAllHistoryDonation = () => {
         fetch(APP_BASE_URL+"api/payment/data/donasi",{
-            method:"get",
+            method:"post",
             headers:{
                 "Content-Type":"application/json",
-                "Authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3N5dWt1cmltYW4uY29tL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE3MDIxMDM0NjYsImV4cCI6MTcwMjEzMjI2NiwibmJmIjoxNzAyMTAzNDY2LCJqdGkiOiJpYVhhQ1lIUVc5N1UwbG80Iiwic3ViIjoiMTEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ul6lWpWW5LSmNTQSAyq-91V3nL9jKMXmQZvsxZErPz0"
+                "Authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3N5dWt1cmltYW4uY29tL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE3MDIzMDg3MzYsImV4cCI6MTcwMjMzNzUzNiwibmJmIjoxNzAyMzA4NzM2LCJqdGkiOiJxYzVNQzZtcUtxNlNXZk5LIiwic3ViIjoiMTEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.X9i-w8fuX28GGuoY_c4XHP7W8gO9WYWKdRyOVcTdtgY"
             },
             body:JSON.stringify(data)
         })
         .then(res => res.json())
         .then(data => {
+            console.log(data.data_payment);
             setHistoryDonation(data.data_payment)
-            console.log(data);
+            setDonatur(data.data_payment.length)
         })
         .catch(err => {
+            console.log(err);
+            
         })
     }
     const getDetailDonation = () => {
@@ -45,7 +49,6 @@ export default function DetailDonasi() {
         .then(res => res.json())
         .then(data => {
             setDonation(data.dataDonasi)
-            console.log(data);
             let i = 0
             while (i < data.dataDonasi.length) {
                 i++
@@ -77,7 +80,6 @@ export default function DetailDonasi() {
                 i++
             }
             let percentage = (perk/donation.target)*100
-            console.log(percentage);
             if(percentage < 1){
                 setPercentage("0")
             } else if (percentage > 1 && percentage <= 25) {
@@ -95,16 +97,44 @@ export default function DetailDonasi() {
     }
 
     useEffect(() => {
-        getAllHistoryDonation()
-        getDetailDonation()
-        getPayments()
+        setIsLoading(true)
+        const fetchData = async () => {
+      try {
+        // Make all API calls concurrently using Promise.all
+        await Promise.all([
+          getAllHistoryDonation(),
+          getDetailDonation(),
+          getPayments(),
+        ]);
+
+        // All API calls have finished, set showLoading to false
+        setIsLoading(false);
+      } catch (error) {
+        // Handle errors here if needed
+        console.error('Error fetching data:', error);
+        setIsLoading(false); // Set showLoading to false in case of an error
+      }
+    };
+       
+    fetchData()
     },[])
+    var url = `url(${donation?.gambar_path})`;
 
     return (
+       
         <div className='bg-gradient-to-b from-white to-indigo-100 '>
             <Nav/>
 
-            <img src="/assets/1.jpg" className='w-full' alt="" />
+             {isLoading ? (
+            <>
+                <p className='my-10 mx-8 font-bold'>
+                    Masih loading..
+                </p>
+            </>
+        ) : (
+           
+             <>
+                <div className="w-full h-[350px] bg-center" style={{backgroundImage:url}}></div>
 
             <div className='m-8 '>
 
@@ -129,7 +159,7 @@ export default function DetailDonasi() {
                 <div className='flex justify-around my-4'>
                     <div className='flex mx-4 '>
                         <img src="/assets/Heart.png" className='mx-2' alt="heart" />
-                        1000 Donatur
+                        {donatur} Donatur
                     </div>
                     <div className='border-black flex ml-5 border-l-2'>
                         <img src="/assets/Paper.png" className='mx-2' alt="heart" />
@@ -148,14 +178,7 @@ export default function DetailDonasi() {
 
                <h2 className='font-bold text-xl text-center mb-4'> Donasi Anak Kucing yang Terlantar</h2> 
                 <p>
-               Bayangkan sejenak, berjalan di jalanan dan melihat sepasang mata yang memandang Anda dengan penuh harapan. Itu adalah kucing jalanan yang terlantar, mencari makanan dan tempat yang hangat.
-
-                Kami dari Healyou Foundation berdedikasi untuk memberikan kucing-kucing ini kesempatan kedua untuk hidup yang lebih baik. Dengan bantuan Anda, kita bisa memberikan mereka makanan, perawatan medis, dan rumah yang penuh kasih.
-                Tapi kami tidak bisa melakukannya sendiri. Kami membutuhkan bantuan Anda.
-                Dengan donasi sebesar yang anda mampu, Anda bisa memberi makan kucing jalanan selama seminggu. Dengan Rp200.000, Anda bisa membantu biaya vaksinasi dan sterilisasi. Setiap rupiah yang Anda sumbangkan akan langsung digunakan untuk membantu kucing-kucing ini.
-
-                Jadi, apa yang Anda tunggu? Mari bergabung dengan kami dalam misi ini. Karena setiap kucing pantas mendapatkan hidup yang layak dan penuh kasih.
-                Klik tombol ‘Donasi Sekarang’ dan mulailah membuat perbedaan. Ingat, tidak ada sumbangan yang terlalu kecil atau terlalu besar. Setiap bantuan Anda sangat berarti bagi mereka.
+                    {donation?.deskripsi_donasi}
                 </p>
  
             </div>
@@ -164,11 +187,12 @@ export default function DetailDonasi() {
          <h2 className='font-bold text-xl text-center mb-4 m-8'> 
             Riwayat Donasi
 
-            <div className='container-history-donation flex flex-column justify-center'>
+            <div className='scroll container-history-donation flex-column justify-center h-[500px] overflow-y-scroll overflow-x-hidden'>
                 {
                     (historyDonation == null) ?(<></>) : (
                     historyDonation.map((e,i) => {
-                        <HistoryDonation key={i} name="Firman" totalDonation={"20000"} time={""}/>
+                        console.log(i);
+                        return <HistoryDonation key={i} name="Firman" totalDonation="20000" time={""}/>
                     })
                     )
                 }
@@ -188,6 +212,10 @@ export default function DetailDonasi() {
             <p className='text-center mb-8'>
                 Belum ada kabar baru dari penyelenggara
             </p>
+            </>
+        )}
+
+            
 
 <Footer/>
         </div>
