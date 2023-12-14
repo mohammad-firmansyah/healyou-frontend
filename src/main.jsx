@@ -18,12 +18,9 @@ import DetailDonasi from './pages/DetailDonasi.jsx';
 import MyDonation from './pages/MyDonation.jsx';
 import SuccessPayment from './pages/SuccessPayment.jsx'
 import FailedPayment from './pages/FailedPayment.jsx'
-<<<<<<< HEAD
-import ArticlePage from './pages/ArticlePage.jsx'
-import NotFound from './pages/NotFound.jsx'
-=======
 import AllDonation from './pages/allDonation.jsx'
->>>>>>> c4c629af7b56b303a9cf709dd2567af30728e3ec
+import NotFound from './pages/NotFound.jsx'
+import ArticlePage from './pages/ArticlePage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -71,11 +68,14 @@ const router = createBrowserRouter([
   }
   ,
   {
-    path:'*',
-    element: <NotFound/>,
     path:'/alldonation',
     element: <AllDonation/>,
-  }
+  },
+  {
+    path:'*',
+    element: <NotFound/>,
+  },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
