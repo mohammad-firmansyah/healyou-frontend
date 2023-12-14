@@ -50,7 +50,7 @@ const router = createBrowserRouter([
   }
   ,
   {
-    path:'/donation/',
+    path:'/mydonation/',
     element: <MyDonation/>,
   }
   ,

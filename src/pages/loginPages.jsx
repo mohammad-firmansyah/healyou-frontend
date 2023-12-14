@@ -2,8 +2,11 @@
 import { APP_BASE_URL } from "../utils/const";
 import { useNavigate } from "react-router-dom";
 import {useRef, useState} from "react";
+import { useAuthenticated } from "../hooks/useAuth";
 
 function loginPages(){
+  useAuthenticated()
+
   const navigate = useNavigate()
 
   const navigateToHome = () => {
@@ -42,16 +45,16 @@ const userPass = useRef()
     return(
         
       <div className='flex items-center justify-center w-full '>
-      <div className='grid gap-1 w-750px  bg-gradient-to-b from-sky-400 to-neutral-50 h-full py-44 px-16 border-x-blue-500 border-x-2'>
+      <div className='grid gap-1 w-750px  bg-gradient-to-b from-[#B9D6F2] to-white to-neutral-50 h-full py-44 px-16  border-x-2'>
         <h1 className='text-5xl my-3 font-bold'>Masuk HEALYOU</h1>
         <div>
           <label className="form-label">Email address</label><br></br>
-          <input type="email" className="w-full h-10 border-2 rounded-lg border-black" placeholder='    myemail@email.com' required ref={userEmail} onChange={(e) => setEmail(e.target.value)} ></input>
+          <input type="email" className="pl-2 w-full h-10 border-2 rounded-lg border-black" placeholder='    myemail@email.com' required ref={userEmail} onChange={(e) => setEmail(e.target.value)} ></input>
         </div>
       <br></br>
       <div>
         <label className="form-label">Password</label><br></br>
-        <input type="password" className="w-full h-10 border-2 rounded-lg border-black" placeholder='   your secret password' required ref={userPass} onChange={(e) => setPassword(e.target.value)} ></input>
+        <input type="password" className="pl-2 w-full h-10 border-2 rounded-lg border-black" placeholder='   your secret password' required ref={userPass} onChange={(e) => setPassword(e.target.value)} ></input>
         <h6>It must be a combination of minimum 8 letters, numbers, and symbols.</h6>
       </div>
 
