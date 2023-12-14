@@ -8,7 +8,7 @@ import Home from './pages/Home.jsx';
 import SignUpPages from './pages/signUpPages.jsx';
 import Payment from './pages/Payment.jsx';
 import ProfilePages from './pages/profilePages.jsx';
-import DetailTransaksiPages from './pages/detailTransaksi.jsx';
+
 
 import{
   createBrowserRouter,
@@ -18,8 +18,12 @@ import DetailDonasi from './pages/DetailDonasi.jsx';
 import MyDonation from './pages/MyDonation.jsx';
 import SuccessPayment from './pages/SuccessPayment.jsx'
 import FailedPayment from './pages/FailedPayment.jsx'
+<<<<<<< HEAD
 import ArticlePage from './pages/ArticlePage.jsx'
 import NotFound from './pages/NotFound.jsx'
+=======
+import AllDonation from './pages/allDonation.jsx'
+>>>>>>> c4c629af7b56b303a9cf709dd2567af30728e3ec
 
 const router = createBrowserRouter([
   {
@@ -42,11 +46,7 @@ const router = createBrowserRouter([
     path:'/profile',
     element: <ProfilePages/>,
   },
-  {
-    path:'/detailTransaksi',
-    element: <DetailTransaksiPages/>,
-  }
-  ,
+  
   {
     path:'/payment',
     element: <Payment/>,
@@ -73,6 +73,8 @@ const router = createBrowserRouter([
   {
     path:'*',
     element: <NotFound/>,
+    path:'/alldonation',
+    element: <AllDonation/>,
   }
 ]);
 
