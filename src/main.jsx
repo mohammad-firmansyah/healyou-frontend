@@ -72,6 +72,10 @@ const router = createBrowserRouter([
     element: <AllDonation/>,
   },
   {
+    path:'/profile',
+    element: <ProfilePages/>,
+  },
+  {
     path:'*',
     element: <NotFound/>,
   },

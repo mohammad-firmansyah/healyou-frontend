@@ -45,12 +45,12 @@ export default function MyDonation() {
             </div>
 
             <div className="mt-6">
-              <div className="inline-block bg-white w-[190px] h-[94px] rounded-md border-2 border-black">
+              <div className="inline-block bg-white w-[190px] h-[94px] rounded-lg shadow-sm">
                 <ul className="p-2 ">
-                  <li className="hover:bg-gray-100 p-2">
+                  <li className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
                     <a>Edit Profil</a>
                   </li>
-                  <li className="hover:bg-gray-100 p-2">
+                  <li className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
                     <a>Donasi Saya</a>
                   </li>
                 </ul>
