@@ -21,7 +21,7 @@ export const useAuth = (to="login") => {
 };
 
 
-export const useAuthenticated = () => {
+export const useAuthenticated = (to) => {
   const history = useNavigate();
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export const useAuthenticated = () => {
 
     // If the token doesn't exist, redirect to the login page
     if (!token) {
-      history('/login');
+      history('/'+to);
     } else {
       // If the token exists, redirect to the home page
       history('/');
@@ -38,5 +38,14 @@ export const useAuthenticated = () => {
   }, [history]);
 
   return null; // You can return any data or component here as needed
+};
+
+export const isAuthenticated = () => {
+    const token = localStorage.getItem('token');
+    if (!token || token != "" || token != undefined) {
+      return false
+    } else {
+        return true
+    }
 };
 

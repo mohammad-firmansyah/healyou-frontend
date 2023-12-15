@@ -2,10 +2,11 @@
 import { APP_BASE_URL } from "../utils/const";
 import { useNavigate } from "react-router-dom";
 import { useState} from "react";
+import { useAuthenticated } from "../hooks/useAuth";
 
 function SignUpPages(){
-  useAuthenticated()
   const navigate = useNavigate()
+  useAuthenticated("signup")
 
   const navigateToHome = () => {
     navigate('/')
@@ -33,8 +34,15 @@ const [passwordConfirmation, setPasswordConfirmation] = useState("");
       .then((res) => res.json())
       .then((data) => {
 
-        localStorage.setItem("token",data.token)
-        navigateToHome()
+        if(data.success){
+          localStorage.setItem("token",data.token)
+          navigateToHome()
+           navigate('/login')
+        }else {
+
+          alert(data.message)
+        }
+
       })
       .catch((err) => {
         console.error("Error fetching data:", err);
@@ -80,7 +88,7 @@ const [passwordConfirmation, setPasswordConfirmation] = useState("");
         </div>
         <br></br>
         
-        <p>already have an account? <a href='./login'>Login</a></p>
+        <p>already have an account? <a onClick={() => {navigate('/login')}}>Login</a></p>
     </div>
   </div>
     )
