@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 import { APP_BASE_URL } from "../utils/const";
 import '../assets/css/donation.css'
 import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 export default function MyDonation() {
   useAuth('mydonation')
   const [donations, setDonations] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
 
   const getDonations = () => {
     fetch(APP_BASE_URL + "api/payment/data/all", {
@@ -40,23 +42,18 @@ export default function MyDonation() {
         <div className="flex w-full p-8 h-[556px]">
           <div className="flex-column">
             <div className="">
-              <p className="font-semibold">
-                Akun <span className="mx-3"> {">"} </span> Donasi Saya
-              </p>
             </div>
 
-            <div className="mt-6">
-              <div className="inline-block bg-white w-[190px] h-[94px] rounded-lg shadow-sm">
+            <div className="inline-block bg-white w-[190px] h-[94px] rounded-lg shadow-sm">
                 <ul className="p-2 ">
-                  <li className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
+                  <li onClick={()=>{navigate('/profile')}} className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
                     <a>Edit Profil</a>
                   </li>
-                  <li className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
+                  <li onClick={()=>{navigate('/mydonation')}} className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
                     <a>Donasi Saya</a>
                   </li>
                 </ul>
               </div>
-            </div>
           </div>
           <div className="flex-column ml-6">
             <h1 className="font-bold text-xl">Donasi Saya</h1>
