@@ -1,20 +1,25 @@
 import Nav from '../components/Nav'
+import { useAuth } from '../hooks/useAuth'
 
 export default function ProfilePages(){
+    useAuth('profile')
     return(
         <div >
             <Nav/>
-            <div className=' px-36 flex justify-center bg-gradient-to-b from-sky-400 to-neutral-50 h-screen pt-9 '>
-                <div className='w-1/5 flex items-center  flex-col gap-3 px-4 font-bold '>
-                    <div>
-                        <h1>akun {'>'} edit profile</h1>
-                    </div>
-                    <div className='rounded-md flex flex-col gap-5 border-black border-2 px-3 py-3 text-sm font-semibold bg-white w-full' >
-                        <h2 className='h-8 flex items-center bg-slate-300 rounded-md px-3 text-lg' >akun saya</h2>
-                        <a className='h-8 flex items-center  rounded-md px-3 text-lg' href='/detailTransaksi'>donasi saya</a>
-                    </div>
-                </div>
-                <div className='flex flex-col w-3/5  h-max rounded-md gap-8 border-black border-2 px-3 py-8 text-sm font-semibold mx-4 bg-white '>
+            <div className='flex justify-center bg-gradient-to-b from-indigo-50 to-white h-screen p-8 '>
+               <div className="shadow-sm ">
+              <div className="inline-block bg-white w-[190px] h-[94px] rounded-lg shadow-sm">
+                <ul className="p-2 ">
+                  <li className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
+                    <a>Edit Profil</a>
+                  </li>
+                  <li className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
+                    <a>Donasi Saya</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+                <div className='flex flex-col w-full h-max rounded-md gap-8  px-4 shadow-sm py-8 text-sm font-semibold mx-4 bg-white rounded-md '>
                     <div>
                         <h1 className='font-bold text-3xl'>DATA DIRI</h1>
                     </div>

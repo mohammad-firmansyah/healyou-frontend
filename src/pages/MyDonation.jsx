@@ -4,8 +4,9 @@ import Donation from "../components/Donation";
 import { useEffect, useState } from "react";
 import { APP_BASE_URL } from "../utils/const";
 import '../assets/css/donation.css'
-
+import { useAuth } from "../hooks/useAuth";
 export default function MyDonation() {
+  useAuth('mydonation')
   const [donations, setDonations] = useState([]);
   const [loading, setLoading] = useState(false);
 

@@ -5,7 +5,7 @@ import {useRef, useState} from "react";
 import { useAuthenticated } from "../hooks/useAuth";
 
 function loginPages(){
-  useAuthenticated()
+  useAuthenticated("login")
 
   const navigate = useNavigate()
 
@@ -32,9 +32,13 @@ const userPass = useRef()
       })
       .then((res) => res.json())
       .then((data) => {
+        if(data.success){
+          localStorage.setItem("token",data.token)
+          navigateToHome()
+        } else {
 
-        localStorage.setItem("token",data.token)
-        navigateToHome()
+          alert(data.message)
+        }
       })
       .catch((err) => {
         console.error("Error fetching data:", err);
@@ -73,7 +77,7 @@ const userPass = useRef()
       </div>
       <br></br>
       
-      <p>no account yet? <a href='./signUp'>Sign up</a></p>
+      <p>no account yet? <a onClick={() => {navigate('/signup')}}>Sign up</a></p>
   </div>
 </div>
     )
