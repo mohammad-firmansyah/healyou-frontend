@@ -6,11 +6,8 @@ export default function DetailMyDonation(){
             <Nav/>
             <div className='flex justify-center h-screen pt-9 '>
                 <div className='w-max flex items-center  flex-col gap-3 px-4 font-bold'>
-                    <div>
-                        <h1>akun {'>'} donasi saya</h1>
-                    </div>
                     <div className="mt-6">
-                        <div className="inline-block bg-white w-[190px] h-[94px] rounded-md border-2 border-black">
+                        <div className="inline-block bg-white w-[190px] h-[94px] rounded-md border-2 ">
                             <ul className="p-2 ">
                                 <li className="hover:bg-gray-100 p-2">
                                     <a>Edit Profil</a>

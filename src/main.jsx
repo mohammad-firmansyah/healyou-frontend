@@ -46,7 +46,7 @@ const router = createBrowserRouter([
   },
   
   {
-    path:'/payment',
+    path:'/payment/:id',
     element: <Payment/>,
   }
   ,
@@ -73,7 +73,7 @@ const router = createBrowserRouter([
     element: <AllDonation/>,
   },
   {
-    path:'/MyDetailDonation',
+    path:'/detail-mydonation/:id',
     element: <MyDetailDonation/>,
   },
   {

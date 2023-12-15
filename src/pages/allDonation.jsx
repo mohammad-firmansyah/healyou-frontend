@@ -2,10 +2,12 @@ import 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { APP_BASE_URL, APP_BASE_URL_IMG } from "../utils/const";
 
 export default function allDonation(){
     const [donations, setDonations] = useState(null);
+    const navigate = useNavigate();
   
     const getDonations = () => {
       fetch(APP_BASE_URL + "api/pilihan/data_donasi", {
@@ -55,7 +57,7 @@ export default function allDonation(){
                             <p className='font-bold text-lg'>{element.judul_donasi}</p>
                             <p className='my-4'>{element.deskripsi_donasi}</p>
                             <div className=' flex justify-center'>
-                                <button className='text-white bg-blue-900 w-full p-2 rounded-3xl'>bantu sekarang</button>
+                                <button onClick={()=>{navigate('/payment/'+element.id_data_donasi)}} className='text-white bg-blue-900 w-full p-2 rounded-3xl'>bantu sekarang</button>
                             </div>
                         </div>
                     </div>

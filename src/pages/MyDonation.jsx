@@ -8,21 +8,32 @@ import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 export default function MyDonation() {
   useAuth('mydonation')
-  const [donations, setDonations] = useState([]);
+  const token = localStorage.getItem('token')
+  const [donations, setDonations] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate()
+
+  const handleClick = (id) => {
+    navigate('/detail-mydonation/'+id)  
+  }
 
   const getDonations = () => {
     fetch(APP_BASE_URL + "api/payment/data/all", {
       method: "post",
       headers: {
-        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3N5dWt1cmltYW4uY29tL3B1YmxpYy9hcGkvbG9naW4iLCJpYXQiOjE3MDIxMDM0NjYsImV4cCI6MTcwMjEzMjI2NiwibmJmIjoxNzAyMTAzNDY2LCJqdGkiOiJpYVhhQ1lIUVc5N1UwbG80Iiwic3ViIjoiMTEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.ul6lWpWW5LSmNTQSAyq-91V3nL9jKMXmQZvsxZErPz0",
+        "Authorization": "Bearer "+ token,
         "Content-Type": "application/json",
+        "Accept": "application/json",
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        setDonations(data.data_payment);
+        if(data.success){
+          setDonations(data.data_payment);
+        } else {
+          alert("error")
+        }
+        console.log(data);
       })
       .catch((err) => {
         console.error("Error fetching data:", err);
@@ -33,7 +44,6 @@ export default function MyDonation() {
     getDonations();
   }, []);
 
-  {console.log(donations);}
   return (
     <>
       <div className="bg-gradient-to-b from-indigo-50 to-white">
@@ -58,7 +68,7 @@ export default function MyDonation() {
           <div className="flex-column ml-6">
             <h1 className="font-bold text-xl">Donasi Saya</h1>
 
-            {donations.length < 1 ? (
+            {donations == null ? (
               <>
                 
                 <p className="font-regular text-medium mt-[21px]">
@@ -75,9 +85,10 @@ export default function MyDonation() {
               <div className="scroll w-full h-[400px] overflow-y-scroll overflow-x-hidden">
 
               
-                {donations.color?.map((element, index) => (
+                {donations?.map((element, index) => (
                   <Donation
                     key={index}
+                    handleClick={() => handleClick(element.data_donasi.id_data_donasi)}
                     hero={element.data_donasi.id_data_donasi+"/"+element.data_donasi.gambar_donasi}
                     title={element.data_donasi.judul_donasi}
                   />
