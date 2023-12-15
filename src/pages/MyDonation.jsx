@@ -45,12 +45,12 @@ export default function MyDonation() {
             </div>
 
             <div className="mt-6">
-              <div className="inline-block bg-white w-[190px] h-[94px] rounded-md border-2 border-black">
+              <div className="inline-block bg-white w-[190px] h-[94px] rounded-lg shadow-sm">
                 <ul className="p-2 ">
-                  <li className="hover:bg-gray-100 p-2">
+                  <li className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
                     <a>Edit Profil</a>
                   </li>
-                  <li className="hover:bg-gray-100 p-2">
+                  <li className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
                     <a>Donasi Saya</a>
                   </li>
                 </ul>
@@ -77,7 +77,7 @@ export default function MyDonation() {
               <div className="scroll w-full h-[400px] overflow-y-scroll overflow-x-hidden">
 
               
-                {donations.map((element, index) => (
+                {donations.color?.map((element, index) => (
                   <Donation
                     key={index}
                     hero={element.data_donasi.id_data_donasi+"/"+element.data_donasi.gambar_donasi}

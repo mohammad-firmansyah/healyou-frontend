@@ -19,7 +19,9 @@ import MyDonation from './pages/MyDonation.jsx';
 import SuccessPayment from './pages/SuccessPayment.jsx'
 import FailedPayment from './pages/FailedPayment.jsx'
 import AllDonation from './pages/allDonation.jsx'
-import DetailMyDonation from './pages/DetailMyDonation.jsx'
+import MyDetailDonation from './pages/DetailMyDonation.jsx'
+import NotFound from './pages/NotFound.jsx'
+import ArticlePage from './pages/ArticlePage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -49,7 +51,7 @@ const router = createBrowserRouter([
   }
   ,
   {
-    path:'/donation/',
+    path:'/mydonation/',
     element: <MyDonation/>,
   }
   ,
@@ -62,13 +64,27 @@ const router = createBrowserRouter([
     element: <FailedPayment/>,
   },
   {
+    path:'/article/:id',
+    element: <ArticlePage/>,
+  }
+  ,
+  {
     path:'/alldonation',
     element: <AllDonation/>,
   },
   {
-    path:'/DetailMyDonation',
-    element: <DetailMyDonation/>,
-  }
+    path:'/MyDetailDonation',
+    element: <MyDetailDonation/>,
+  },
+  {
+    path:'/profile',
+    element: <ProfilePages/>,
+  },
+  {
+    path:'*',
+    element: <NotFound/>,
+  },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

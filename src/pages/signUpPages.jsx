@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState} from "react";
 
 function SignUpPages(){
-
+  useAuthenticated()
   const navigate = useNavigate()
 
   const navigateToHome = () => {
@@ -46,31 +46,31 @@ const [passwordConfirmation, setPasswordConfirmation] = useState("");
     return(
         
         <div className='flex items-center justify-center w-full '>
-        <div className='grid gap-1 w-750px  bg-gradient-to-b from-sky-400 to-neutral-50 h-full py-44 px-16 border-x-blue-500 border-x-2'>
+        <div className='grid gap-1 w-750px  bg-gradient-to-b from-[#B9D6F2] to-white h-full py-44 px-16 '>
           <h1 className='text-5xl my-3 font-bold'>Buat Akun HEAL YOU</h1>
           <div className="flex w-full gap-2">
             <div className="w-full" >
                 <label className="form-label">Nama depan</label><br></br>
-                <input type="text" className="w-full h-10 border-2 rounded-lg border-black" placeholder='    masukkan nama depan' onChange={(e) => setNamaDepan(e.target.value)}></input>
+                <input type="text" className="pl-2 w-full h-10 border-2 rounded-lg border-black" placeholder='    masukkan nama depan' onChange={(e) => setNamaDepan(e.target.value)}></input>
             </div>
             <div className="w-full">
                 <label className="form-label">Nama belakang</label><br></br>
-                <input type="text" className="w-full h-10 border-2 rounded-lg border-black" placeholder='    masukkan nama belakang'  onChange={(e) => setNamaBelakang(e.target.value)}></input>
+                <input type="text" className="pl-2 w-full h-10 border-2 rounded-lg border-black" placeholder='    masukkan nama belakang'  onChange={(e) => setNamaBelakang(e.target.value)}></input>
             </div>
           </div>
           <div>
             <label className="form-label">Email address</label><br></br>
-            <input type="email" className="w-full h-10 border-2 rounded-lg border-black" placeholder='    myemail@email.com'   onChange={(e) => setEmail(e.target.value)} ></input>
+            <input type="email" className="pl-2 w-full h-10 border-2 rounded-lg border-black" placeholder='    myemail@email.com'   onChange={(e) => setEmail(e.target.value)} ></input>
           </div>
         
         <div>
           <label className="form-label">Password</label><br></br>
-          <input type="password" className="w-full h-10 border-2 rounded-lg border-black" placeholder='   your secret password'  onChange={(e) => setPassword(e.target.value)} ></input>
+          <input type="password" className="pl-2 w-full h-10 border-2 rounded-lg border-black" placeholder='   your secret password'  onChange={(e) => setPassword(e.target.value)} ></input>
         </div>
 
         <div>
           <label className="form-label">Password confirmation</label><br></br>
-          <input type="password" className="w-full h-10 border-2 rounded-lg border-black" placeholder='   your secret password'  onChange={(e) => setPasswordConfirmation(e.target.value)}></input>
+          <input type="password" className="pl-2 w-full h-10 border-2 rounded-lg border-black" placeholder='   your secret password'  onChange={(e) => setPasswordConfirmation(e.target.value)}></input>
           <h6>It must be a combination of minimum 8 letters, numbers, and symbols.</h6>
         </div>
 
