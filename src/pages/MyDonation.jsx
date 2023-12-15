@@ -88,7 +88,7 @@ export default function MyDonation() {
                 {donations?.map((element, index) => (
                   <Donation
                     key={index}
-                    handleClick={() => handleClick(element.data_donasi.id_data_donasi)}
+                    handleClick={() => handleClick(element.id)}
                     hero={element.data_donasi.id_data_donasi+"/"+element.data_donasi.gambar_donasi}
                     title={element.data_donasi.judul_donasi}
                   />

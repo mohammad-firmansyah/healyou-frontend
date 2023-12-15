@@ -38,7 +38,6 @@ export default function allDonation(){
         <div className='h-full bg-gradient-to-b from-white to-indigo-100 '>
         <Nav/>
             <div className='px-7 py-3'>
-                <h1 className='font-medium'>home  {'>'}  Donasi</h1>
                 <h1 className='font-semibold mt-5'>Healyou</h1>
                 <h1 className='text-5xl font-bold mb-10'>ayo bantu wujudkan upaya kami</h1>
                 <p>Setiap donasi, tidak peduli seberapa kecilnya, dapat membantu kami memberikan perawatan medis, makanan, dan tempat tinggal sementara bagi kucing-kucing yang membutuhkan. Dengan berdonasi hari ini, Anda dapat membantu kami menyelamatkan lebih banyak nyawa dan memberikan masa depan yang lebih baik bagi kucing-kucing ini.</p>
@@ -50,7 +49,7 @@ export default function allDonation(){
                 
                     {(donations != null ) ? donations.map((element, index) => (
                     <>
-                        <div key={index} className='basis-1/2 w-auto bg-white  rounded-xl'>
+                        <div onClick={() => {navigate('/detail/'+element.id_data_donasi)}} key={index} className='basis-1/2 w-auto bg-white  rounded-xl'>
                         <img srcSet={APP_BASE_URL_IMG+element.id_data_donasi+"/"+element.gambar_donasi} className='w-full h-56 object-cover  rounded-t-xl'/>
                         <div className='p-4'>
                             <p>donasi</p>
