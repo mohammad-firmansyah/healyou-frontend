@@ -19,7 +19,7 @@ export default function Nav() {
           <a href="#"> Donasi</a>
         </div>
         <div className="text-white text-base font-bold leading-4 tracking-wide whitespace-nowrap">
-          <a href="#"> Akun</a>
+          <a href="/profile"> Akun</a>
         </div>
       </div>
       <button onClick={navigateToLogin} className="border-0 text-indigo-900 text-base font-medium leading-4 tracking-wide whitespace-nowrap justify-center shadow-sm bg-white self-stretch px-5 py-2.5 rounded-3xl border-2 border-solid border-blue-200 max-md:pl-2.5 hover:bg-indigo-100">

@@ -2,17 +2,25 @@ import Nav from '../components/Nav'
 
 export default function ProfilePages(){
     return(
-        <div >
+        <div className='bg-gradient-to-b from-indigo-50 to-white'>
             <Nav/>
-            <div className=' px-36 flex justify-center bg-gradient-to-b from-sky-400 to-neutral-50 h-screen pt-9 '>
-                <div className='w-1/5 flex items-center  flex-col gap-3 px-4 font-bold '>
+            <div className='  flex justify-center h-screen pt-9 '>
+                <div className='w-max flex items-center  flex-col gap-3 px-4 font-bold '>
                     <div>
                         <h1>akun {'>'} edit profile</h1>
                     </div>
-                    <div className='rounded-md flex flex-col gap-5 border-black border-2 px-3 py-3 text-sm font-semibold bg-white w-full' >
-                        <h2 className='h-8 flex items-center bg-slate-300 rounded-md px-3 text-lg' >akun saya</h2>
-                        <a className='h-8 flex items-center  rounded-md px-3 text-lg' href='/detailTransaksi'>donasi saya</a>
-                    </div>
+                    <div className="mt-6">
+              <div className="inline-block bg-white w-[190px] h-[94px] rounded-md border-2 border-black">
+                <ul className="p-2 ">
+                  <li className="hover:bg-gray-100 p-2">
+                    <a>Edit Profil</a>
+                  </li>
+                  <li className="hover:bg-gray-100 p-2">
+                    <a>Donasi Saya</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
                 </div>
                 <div className='flex flex-col w-3/5  h-max rounded-md gap-8 border-black border-2 px-3 py-8 text-sm font-semibold mx-4 bg-white '>
                     <div>

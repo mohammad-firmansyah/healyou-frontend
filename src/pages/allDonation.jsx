@@ -1,8 +1,35 @@
 import 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import { useEffect, useState } from "react";
+import { APP_BASE_URL } from "../utils/const";
 
 export default function allDonation(){
+
+  
+    const getDonations = () => {
+      fetch(APP_BASE_URL + "api/payment/data/all", {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setDonations(data.data_payment);
+        })
+        .catch((err) => {
+          console.error("Error fetching data:", err);
+        });
+    };
+  
+    useEffect(() => {
+      getDonations();
+    }, []);
+  
+    {console.log(donations);}
+
     return(
         <div className='h-full bg-gradient-to-b from-white to-indigo-100 '>
         <Nav/>

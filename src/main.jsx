@@ -19,6 +19,7 @@ import MyDonation from './pages/MyDonation.jsx';
 import SuccessPayment from './pages/SuccessPayment.jsx'
 import FailedPayment from './pages/FailedPayment.jsx'
 import AllDonation from './pages/allDonation.jsx'
+import DetailMyDonation from './pages/DetailMyDonation.jsx'
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
   {
     path:'/alldonation',
     element: <AllDonation/>,
+  },
+  {
+    path:'/DetailMyDonation',
+    element: <DetailMyDonation/>,
   }
 ]);
 
