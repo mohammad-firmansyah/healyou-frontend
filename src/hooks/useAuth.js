@@ -42,10 +42,14 @@ export const useAuthenticated = (to) => {
 
 export const isAuthenticated = () => {
     const token = localStorage.getItem('token');
-    if (!token || token != "" || token != undefined) {
+    if (token == ""  || token == undefined) {
       return false
     } else {
         return true
     }
+};
+
+export const logout = () => {
+    localStorage.clear('token');
 };
 

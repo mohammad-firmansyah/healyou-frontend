@@ -35,8 +35,6 @@ const [passwordConfirmation, setPasswordConfirmation] = useState("");
       .then((data) => {
 
         if(data.success){
-          localStorage.setItem("token",data.token)
-          navigateToHome()
            navigate('/login')
         }else {
 

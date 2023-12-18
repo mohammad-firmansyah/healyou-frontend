@@ -154,7 +154,7 @@ export default function DetailDonasi() {
                     <div className={'w-'+ percentage +' h-3 bg-blue-600'}/>
                 </div>
 
-                <button className='w-full font-regular bg-blue-600 text-white py-2 rounded-full mt-6 text-sm'>Donasi Sekarang</button>
+                <button onClick={() => {navigate('/payment/'+params.id)}} className='w-full font-regular bg-blue-600 text-white py-2 rounded-full mt-6 text-sm'>Donasi Sekarang</button>
 
                 <div className='flex justify-around my-4'>
                     <div className='flex mx-4 '>
@@ -190,9 +190,8 @@ export default function DetailDonasi() {
             <div className='scroll container-history-donation flex-column justify-center h-[500px] overflow-y-scroll overflow-x-hidden'>
                 {
                     (historyDonation == null) ?(<></>) : (
-                    historyDonation.map((e,i) => {
-                        console.log(i);
-                        return <HistoryDonation key={i} name="Firman" totalDonation="20000" time={""}/>
+                    historyDonation.map(e => {
+                        return <HistoryDonation key={e.id} name={(e.nama_donatur == "") ? "orang baik" : e.nama_donatur } totalDonation="20000" time={""}/>
                     })
                     )
                 }

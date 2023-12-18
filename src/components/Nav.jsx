@@ -1,13 +1,20 @@
 import "react";
 
 import { useNavigate } from "react-router-dom";
-import { isAuthenticated } from "../hooks/useAuth";
+import { isAuthenticated,logout } from "../hooks/useAuth";
 export default function Nav() {
 
   const navigate = useNavigate()
   const navigateToLogin = () => {
     navigate('/login')
   }
+  
+  const navigateLogout = () => {
+    logout()
+    navigate('/login')
+  }
+
+  console.log(isAuthenticated());
 
   return (
     <div className="bg-indigo-900 self-stretch flex w-full items-center justify-between gap-5 pl-14 pr-20 py-6 max-md:max-w-full max-md:flex-wrap max-md:px-5">
@@ -27,10 +34,16 @@ export default function Nav() {
 
         
         (isAuthenticated()) ? (<>
-          <button onClick={navigateToLogin} className="border-0 text-indigo-900 text-base font-medium leading-4 tracking-wide whitespace-nowrap justify-center shadow-sm bg-white self-stretch px-5 py-2.5 rounded-3xl border-2 border-solid border-blue-200 max-md:pl-2.5 hover:bg-indigo-100">
-        Masuk
+          <button onClick={navigateLogout} className="border-0 text-indigo-900 text-base font-medium leading-4 tracking-wide whitespace-nowrap justify-center shadow-sm bg-white self-stretch px-5 py-2.5 rounded-3xl border-2 border-solid border-blue-200 max-md:pl-2.5 hover:bg-indigo-100">
+        Logout
       </button>  
-        </>):""
+        </>):(
+          <>
+            <button onClick={navigateToLogin} className="border-0 text-indigo-900 text-base font-medium leading-4 tracking-wide whitespace-nowrap justify-center shadow-sm bg-white self-stretch px-5 py-2.5 rounded-3xl border-2 border-solid border-blue-200 max-md:pl-2.5 hover:bg-indigo-100">
+        Masuk
+      </button>
+          </>
+        )
       } 
       
     </div>

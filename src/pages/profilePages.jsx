@@ -1,8 +1,9 @@
 import Nav from '../components/Nav'
 import { useAuth } from '../hooks/useAuth'
-
+import { useNavigate } from 'react-router-dom'
 export default function ProfilePages(){
     useAuth('profile')
+    const navigate = useNavigate()
     return(
         <div className='bg-gradient-to-b from-indigo-50 to-white'>
             <Nav/>
@@ -10,10 +11,10 @@ export default function ProfilePages(){
                <div className="shadow-sm ">
               <div className="inline-block bg-white w-[190px] h-[94px] rounded-lg shadow-sm">
                 <ul className="p-2 ">
-                  <li className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
+                  <li onClick={()=>{navigate('/profile')}} className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
                     <a>Edit Profil</a>
                   </li>
-                  <li className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
+                  <li onClick={()=>{navigate('/mydonation')}} className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
                     <a>Donasi Saya</a>
                   </li>
                 </ul>
