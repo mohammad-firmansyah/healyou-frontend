@@ -19,7 +19,7 @@ import MyDonation from './pages/MyDonation.jsx';
 import SuccessPayment from './pages/SuccessPayment.jsx'
 import FailedPayment from './pages/FailedPayment.jsx'
 import AllDonation from './pages/allDonation.jsx'
-import MyDetailDonation from './pages/DetailMyDonation.jsx'
+import MyDetailDonation from './pages/MyDetailDonation.jsx'
 import NotFound from './pages/NotFound.jsx'
 import ArticlePage from './pages/ArticlePage.jsx'
 

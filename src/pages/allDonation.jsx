@@ -45,7 +45,8 @@ export default function allDonation(){
                 </div>
                 <p className='text-center'>pilih donasi kamu:</p>
                 <div className='grid grid-cols-2 flex-auto p-10 gap-10 justify-center'>
-                
+
+                    
                     {(donations != null ) ? donations.map((element, index) => (
                     <>
                         <div key={index} className='basis-1/2 w-auto bg-white  rounded-xl'>

@@ -5,23 +5,18 @@ export default function DetailMyDonation(){
         <div  className='bg-gradient-to-b from-indigo-50 to-white'>
             <Nav/>
             <div className='flex justify-center h-screen pt-9 '>
-                <div className='w-max flex items-center  flex-col gap-3 px-4 font-bold'>
-                    <div>
-                        <h1>akun {'>'} donasi saya</h1>
-                    </div>
-                    <div className="mt-6">
-                        <div className="inline-block bg-white w-[190px] h-[94px] rounded-md border-2 border-black">
-                            <ul className="p-2 ">
-                                <li className="hover:bg-gray-100 p-2">
-                                    <a>Edit Profil</a>
-                                </li>
-                                <li className="hover:bg-gray-100 p-2">
-                                    <a>Donasi Saya</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <div className="shadow-sm ">
+              <div className="inline-block bg-white w-[190px] h-[94px] rounded-lg shadow-sm">
+                <ul className="p-2 ">
+                  <li className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
+                    <a>Edit Profil</a>
+                  </li>
+                  <li className="hover:bg-gray-100 p-2 rounded-lg cursor-pointer">
+                    <a>Donasi Saya</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
                 <div className='w-3/5 '>
                     <div className='flex items-center flex-col mb-4 ' >
                         <h1>Terima kasih!</h1>
@@ -58,7 +53,12 @@ export default function DetailMyDonation(){
                     <div className='p-10'>
                         <img className="w-full h-44 object-cover  rounded-xl" srcSet="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=2043&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" ></img>
                     </div>
-                    
+                    <p className='pb-5'>membantu anak kucing yang terlantar</p>
+                    <hr className='bg-black border-black border-2'></hr>
+                    <div className='flex flex-row place-content-between'>
+                        <p className=''>total donasi</p>
+                        <p>Rp 123.000</p>
+                    </div>
                 </div>
             </div>
         </div>
